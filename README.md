@@ -27,19 +27,8 @@ You need [Bun](https://bun.sh) 1.2 or later, a Burrowbox API key (**Account → 
 git clone https://github.com/burrowbox/examples.git
 cd examples
 cp .env.example .env   # fill in BURROWBOX_KEY and ANTHROPIC_API_KEY
+bun install
 ```
-
-### Use a local build of the SDK (until `burrowbox` is on npm)
-
-The examples depend on `burrowbox@^0.1.0`, which isn't published yet. Until it is, the root `package.json` overrides it with `link:burrowbox`, so build the SDK once and register it with `bun link`:
-
-```bash
-git clone https://github.com/burrowbox/burrowbox-js.git ../burrowbox-js
-cd ../burrowbox-js && bun install && bun run build && bun link
-cd ../examples && bun install
-```
-
-After changing the SDK, run `bun run build` in `burrowbox-js` again; the examples pick it up through the link. Once `burrowbox` is published, the `overrides` entry goes away and `bun install` is all you need.
 
 ### Run an example
 
