@@ -5,3 +5,7 @@ node_modules/
 *.log
 .DS_Store
 .sdk/
+
+# screenshots the examples save
+*/screen.jpg
+*/signed-in.png

@@ -19,6 +19,8 @@ try {
     options: {
       model: "claude-sonnet-5-5",
       mcpServers: toAgentSdkMcpServers(mcp),
+      settingSources: [], // run isolated from your local Claude Code settings, CLAUDE.md and plugins
+      strictMcpConfig: true, // only the machine's MCP server, none from your own config
       tools: [], // no local tools: Claude works only through the Burrowbox machine
       allowedTools: [`mcp__${mcp.name}`], // every tool on that server, without prompting
       maxTurns: 40,

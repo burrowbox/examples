@@ -65,6 +65,8 @@ async function letClaudeDrive(cfg: McpServerConfig): Promise<string> {
     options: {
       model: "claude-sonnet-5-5",
       mcpServers: toAgentSdkMcpServers(cfg),
+      settingSources: [], // run isolated from your local Claude Code settings, CLAUDE.md and plugins
+      strictMcpConfig: true, // only the machine's MCP server, none from your own config
       tools: [], // no local tools
       allowedTools: [`mcp__${cfg.name}`], // the machine's tools run without prompting…
       disallowedTools: blocked.map((tool) => `mcp__${cfg.name}__${tool}`), // …except these

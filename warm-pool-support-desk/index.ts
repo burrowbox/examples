@@ -5,14 +5,14 @@ const bb = new Burrowbox(); // reads BURROWBOX_KEY
 const port = Number(process.env.PORT ?? 3000);
 
 // Every idle machine in the pool runs this template before it counts as ready, so a
-// customer gets a desktop with GIMP installed and the help page open, with no wait.
+// customer gets a desktop with GIMP already open on screen, with no wait.
 const pool = await bb.pools.create({
   name: "support-desk",
   size: "tiny",
   target: 2,
   setup: [
     { type: "tool", tool: "apps_install", arguments: { kind: "apt", packages: ["gimp"] } },
-    { type: "tool", tool: "browser_navigate", arguments: { url: "https://docs.gimp.org/" } },
+    { type: "tool", tool: "apps_launch", arguments: { app: "gimp" } },
   ],
 });
 console.log(`Created pool ${pool.id}; warming ${pool.target} machines (idle pool machines are billed like running ones)`);

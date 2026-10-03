@@ -2,7 +2,7 @@
 
 **[→ Start using Burrowbox](https://burrowbox.dev)** · [API docs](https://burrowbox.dev/docs)
 
-A support desk that hands each customer a ready-made desktop with no boot wait. It creates a [warm pool](https://burrowbox.dev/docs/pools) whose template installs GIMP and opens the GIMP docs in the browser, so idle machines are already set up. A small `Bun.serve` page has a **Start session** button: it claims a machine for the customer and shows its interactive live view.
+A support desk that hands each customer a ready-made desktop with no boot wait. It creates a [warm pool](https://burrowbox.dev/docs/pools) whose template installs GIMP and opens it on the desktop, so idle machines are already set up. A small `Bun.serve` page has a **Start session** button: it claims a machine for the customer and shows its interactive live view.
 
 - `bb.pools.create({ target, setup })` keeps two machines booted and set up from the template.
 - `bb.pools.claim(pool, { externalId, labels, ttlMinutes })` takes one for a customer. `fromPool: true` means it came from the pool. `fromPool: false` means the pool was empty, so a new machine booted with the pool's settings and its setup runs in the background (`setup: "pending"`).
