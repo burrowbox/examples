@@ -1,0 +1,13 @@
+{
+  "name": "@burrowbox-examples/one-machine-per-customer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun --env-file=../.env run index.ts",
+    "cleanup": "bun --env-file=../.env run index.ts cleanup"
+  },
+  "dependencies": {
+    "burrowbox": "^0.1.0",
+    "@anthropic-ai/claude-agent-sdk": "^0.3.288"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "burrowbox-examples",
+  "private": true,
+  "type": "module",
+  "workspaces": ["*"],
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "overrides": {
+    "burrowbox": "link:burrowbox"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.9.3"
+  }
+}

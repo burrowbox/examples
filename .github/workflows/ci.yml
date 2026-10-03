@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # `burrowbox` isn't on npm yet, so CI builds it from source and links it (the root
+      # package.json overrides `burrowbox` with `link:burrowbox`). burrowbox/burrowbox-js is
+      # private and GITHUB_TOKEN can't read other repos: add a fine-grained token with
+      # read-only "Contents" access to burrowbox/burrowbox-js as the SDK_READ_TOKEN secret.
+      # Once burrowbox is published, delete these three steps and the override.
+      - name: Check for SDK_READ_TOKEN
+        env:
+          SDK_READ_TOKEN: ${{ secrets.SDK_READ_TOKEN }}
+        run: |
+          if [ -z "$SDK_READ_TOKEN" ]; then
+            echo "::error::Add an SDK_READ_TOKEN secret with read access to burrowbox/burrowbox-js (see ci.yml)"
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          repository: burrowbox/burrowbox-js
+          token: ${{ secrets.SDK_READ_TOKEN }}
+          path: .sdk
+
+      - uses: oven-sh/setup-bun@v2
+
+      - name: Build and link the SDK
+        working-directory: .sdk
+        run: bun install && bun run build && bun link
+
+      - run: bun install
+      - run: bun run typecheck
