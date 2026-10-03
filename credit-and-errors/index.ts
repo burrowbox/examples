@@ -1,5 +1,6 @@
 import {
   Burrowbox,
+  BurrowboxError,
   ConflictError,
   ConnectionError,
   InsufficientCreditError,
@@ -60,8 +61,14 @@ async function createMachine(params: MachineCreateParams, attempts = 3): Promise
       if (err instanceof InsufficientCreditError) {
         console.log(`${err.name}: ${err.message}`);
         const { card } = await bb.billing.card.get();
-        const { url } = card ? await bb.billing.topUp({ cents: 2_000 }) : await bb.billing.card.checkout();
-        console.log(card ? `Add $20 of credit: ${url}` : `Save a card first: ${url}`);
+        try {
+          const { url } = card ? await bb.billing.topUp({ cents: 2_000 }) : await bb.billing.card.checkout();
+          console.log(card ? `Add $20 of credit: ${url}` : `Save a card first: ${url}`);
+        } catch (linkErr) {
+          // No checkout link (for example a server without payments set up): point to the dashboard.
+          if (!(linkErr instanceof BurrowboxError)) throw linkErr;
+          console.log(`Open Billing in the dashboard to ${card ? "add credit" : "save a card"}.`);
+        }
         return null;
       }
 
