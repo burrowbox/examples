@@ -87,6 +87,8 @@ async function runAgent(mcp: McpServerConfig, task: string): Promise<string> {
     options: {
       model: "claude-sonnet-5-5",
       mcpServers: toAgentSdkMcpServers(mcp),
+      settingSources: [], // run isolated from your local Claude Code settings, CLAUDE.md and plugins
+      strictMcpConfig: true, // only the machine's MCP server, none from your own config
       tools: [],
       allowedTools: [`mcp__${mcp.name}`],
       maxTurns: 20,

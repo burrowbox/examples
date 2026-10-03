@@ -59,6 +59,8 @@ async function checkSignIn(mcp: McpServerConfig, prompt: string, blockedTools: s
     options: {
       model: "claude-sonnet-5-5",
       mcpServers: toAgentSdkMcpServers(mcp),
+      settingSources: [], // run isolated from your local Claude Code settings, CLAUDE.md and plugins
+      strictMcpConfig: true, // only the machine's MCP server, none from your own config
       tools: [],
       allowedTools: [`mcp__${mcp.name}`],
       disallowedTools: blockedTools.map((tool) => `mcp__${mcp.name}__${tool}`),
