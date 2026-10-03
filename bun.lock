@@ -22,6 +22,21 @@
         "burrowbox": "^0.1.0",
       },
     },
+    "desktop-app-automation": {
+      "name": "@burrowbox-examples/desktop-app-automation",
+      "dependencies": {
+        "@anthropic-ai/claude-agent-sdk": "^0.3.288",
+        "@modelcontextprotocol/sdk": "^1.32.0",
+        "burrowbox": "^0.1.0",
+      },
+    },
+    "embed-live-view": {
+      "name": "@burrowbox-examples/embed-live-view",
+      "dependencies": {
+        "@modelcontextprotocol/sdk": "^1.32.0",
+        "burrowbox": "^0.1.0",
+      },
+    },
     "one-machine-per-customer": {
       "name": "@burrowbox-examples/one-machine-per-customer",
       "dependencies": {
@@ -33,6 +48,18 @@
       "name": "@burrowbox-examples/quickstart",
       "dependencies": {
         "@anthropic-ai/claude-agent-sdk": "^0.3.288",
+        "burrowbox": "^0.1.0",
+      },
+    },
+    "scheduled-jobs-and-webhooks": {
+      "name": "@burrowbox-examples/scheduled-jobs-and-webhooks",
+      "dependencies": {
+        "burrowbox": "^0.1.0",
+      },
+    },
+    "warm-pool-support-desk": {
+      "name": "@burrowbox-examples/warm-pool-support-desk",
+      "dependencies": {
         "burrowbox": "^0.1.0",
       },
     },
@@ -64,9 +91,17 @@
 
     "@burrowbox-examples/credit-and-errors": ["@burrowbox-examples/credit-and-errors@workspace:credit-and-errors"],
 
+    "@burrowbox-examples/desktop-app-automation": ["@burrowbox-examples/desktop-app-automation@workspace:desktop-app-automation"],
+
+    "@burrowbox-examples/embed-live-view": ["@burrowbox-examples/embed-live-view@workspace:embed-live-view"],
+
     "@burrowbox-examples/one-machine-per-customer": ["@burrowbox-examples/one-machine-per-customer@workspace:one-machine-per-customer"],
 
     "@burrowbox-examples/quickstart": ["@burrowbox-examples/quickstart@workspace:quickstart"],
+
+    "@burrowbox-examples/scheduled-jobs-and-webhooks": ["@burrowbox-examples/scheduled-jobs-and-webhooks@workspace:scheduled-jobs-and-webhooks"],
+
+    "@burrowbox-examples/warm-pool-support-desk": ["@burrowbox-examples/warm-pool-support-desk@workspace:warm-pool-support-desk"],
 
     "@hono/node-server": ["@hono/node-server@2.1.3", "", { "peerDependencies": { "hono": "^4" } }, "sha512-TA//nWMqPhbfdfneACk6t5a9eqbS9lABEPyKn0/xZTah3H3U2XaVg85rJFl0/Fyit0I552YDHgXGVSf3GwqbUw=="],
 

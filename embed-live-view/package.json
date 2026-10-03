@@ -1,0 +1,12 @@
+{
+  "name": "@burrowbox-examples/embed-live-view",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun --env-file=../.env run index.ts"
+  },
+  "dependencies": {
+    "burrowbox": "^0.1.0",
+    "@modelcontextprotocol/sdk": "^1.32.0"
+  }
+}

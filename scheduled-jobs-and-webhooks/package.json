@@ -1,0 +1,11 @@
+{
+  "name": "@burrowbox-examples/scheduled-jobs-and-webhooks",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun --env-file=../.env run index.ts"
+  },
+  "dependencies": {
+    "burrowbox": "^0.1.0"
+  }
+}
